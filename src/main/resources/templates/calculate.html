@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate</title>
+</head>
+<body>
+<div>
+    <form action="/" method="post"  th:object="${calculator}">
+    <label> Podaj droge w kilometrach</label>
+    <input type="text" th:field="*{routeInKilometers}" name="routeInKilometers">
+    <label> Podaj srednie spalanie</label>
+    <input type="number" th:field="*{averageCombustion}" name="averageCombustion">
+    <label> Podaj cene paliwa za litr</label>
+    <input type="number" th:field="*{fuelPricePerLiter}" name="fuelPricePerLiter">
+    <input type="number" th:field="*{howManyPeople}" name="howManyPeople">
+
+    <input type="submit"  name="costCalculator" value="Oblicz">
+    <input type="submit"  name="costPerPerson" value="Oblicz">
+
+    </form>
+    <p>WYnik to:</p>
+    <p th:text="${result}"></p>
+    <br>
+    <p>Koszt na jedna osobe</p>
+    <p th:text="${result2}"></p>
+</div>
+</body>
+</html>
