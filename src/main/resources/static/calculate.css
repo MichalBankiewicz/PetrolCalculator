@@ -1,0 +1,8 @@
+.center{
+   place-items: center;
+    margin-left: 200px;
+}
+
+.ramka{
+    border: 2px solid black;
+}

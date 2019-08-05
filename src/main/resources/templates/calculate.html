@@ -1,29 +1,69 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Calculate</title>
-</head>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="calculate.css">
+<style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    center{place-items: center;}
+
+</style>
 <body>
-<div>
-    <form action="/" method="post"  th:object="${calculator}">
-    <label> Podaj droge w kilometrach</label>
-    <input type="text" th:field="*{routeInKilometers}" name="routeInKilometers">
-    <label> Podaj srednie spalanie</label>
-    <input type="number" th:field="*{averageCombustion}" name="averageCombustion">
-    <label> Podaj cene paliwa za litr</label>
-    <input type="number" th:field="*{fuelPricePerLiter}" name="fuelPricePerLiter">
-    <input type="number" th:field="*{howManyPeople}" name="howManyPeople">
+<header>
+    <div class="w3-main" style="margin-left:300px">
 
-<!--    <input type="submit"  name="costCalculator" value="Oblicz">-->
-    <input type="submit"  name="costPerPerson" value="Oblicz">
+        <!-- Header -->
+        <div class="w3-display-top">
+            <h1 class="w3-jumbo w3-animate-top" style="margin-left: auto">KALKULATOR PALIWA</h1>
+            <hr class="w3-border-grey w3-display-top" style="width: 670px" >
+            <div class="w6-container">
+                <div class="">
+                    <form action="/main" method="post" th:object="${calculator}">
+                        <p>
+                            <label> Podaj miasto poczatowe</label>
+                            <input type="text" th:field="*{start}" name="start"></p>
+                        <p>
+                            <label> Podaj miasto koncowe</label>
+                            <input type="text" th:field="*{stop}" name="stop"></p>
 
-    </form>
-<!--    <p>WYnik to:</p>
-    <p th:text="${result}"></p>-->
-    <br>
-    <p>Koszt na jedna osobe</p>
-    <p th:text="${result2}"></p>
-</div>
+                        <p>
+                            <label> Podaj droge w kilometrach</label>
+                            <input type="number" step="0.1" th:field="*{routeInKilometers}" name="routeInKilometers"></p>
+                        <p>
+                            <label> Podaj srednie spalanie</label>
+                            <input type="number" step="0.1" th:field="*{averageCombustion}" name="averageCombustion"></p>
+                        <p>
+                            <label> Podaj cene paliwa za litr</label>
+                        <input type="number" step="0.1" th:field="*{fuelPricePerLiter}" name="fuelPricePerLiter"></p>
+                        <p>
+                            <label> Podaj ilość osób podróżujących </label>
+                            <input type="number"   th:field="*{howManyPeople}" name="howManyPeople"></p>
+
+                        <!--    <input type="submit"  name="costCalculator" value="Oblicz">-->
+                        <input  type="submit" name="costPerPerson" value="Oblicz">
+
+                    </form>
+
+                    <p>Koszt na jedna osobe</p>
+                    <p th:text="${result2}"></p>
+                </div>
+
+                <a href="/main" class="w3-bar-item w3-button">Home</a>
+                <a href="/" class="w3-bar-item w3-button">Kalkulator</a>
+                <a href="/list" class="w3-bar-item w3-button">Lista podróży</a>
+            </div>
+
+        </div>
+    </div>
+
+
+</header>
+<br>
+
+
 </body>
 </html>

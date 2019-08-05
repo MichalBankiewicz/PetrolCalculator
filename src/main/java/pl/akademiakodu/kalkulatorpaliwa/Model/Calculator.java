@@ -24,8 +24,25 @@ public class Calculator {
     private double averageCombustion;
     private double fuelPricePerLiter;
     private int howManyPeople;
+    private String start;
+    private String stop;
 
 
+    public String getStop() {
+        return stop;
+    }
+
+    public void setStop(String stop) {
+        this.stop = stop;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
 
     public Double getRouteInKilometers() {
         return routeInKilometers;
@@ -58,4 +75,10 @@ public class Calculator {
     public void setHowManyPeople(int howManyPeople) {
         this.howManyPeople = howManyPeople;
     }
+
+    @Override
+    public String toString(){
+        return "Początek trasy: "+getStart()+ " koniec: "+getStop()+ " odległość "+getRouteInKilometers()+" km";
+    }
+
 }

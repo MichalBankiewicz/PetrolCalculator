@@ -17,30 +17,35 @@ public class CalculatorController {
     Calculator calculator = new Calculator();
     CostCalculator costCalculator = new CostCalculator();
 
-    @GetMapping("/main")
+    @GetMapping("/")
     public String main() {
         return "main";
     }
 
-    @GetMapping("/")
+    @GetMapping("/main")
     public String indexGet(Model model) {
         model.addAttribute("calculator", calculator);
         return "calculate";
     }
 
-    @RequestMapping(params = "costCalculator", method = RequestMethod.POST)
+/*    @RequestMapping(params = "costCalculator", method = RequestMethod.POST)
     public String create(@ModelAttribute("calculator") Calculator calculator, Model map) {
         map.addAttribute("result", costCalculator.costCalculator(calculator.getRouteInKilometers(),
                 calculator.getAverageCombustion(), calculator.getFuelPricePerLiter()));
 
         return "calculate";
-    }
+    }*/
 
     @RequestMapping(params = "costPerPerson", method = RequestMethod.POST)
     public String create2(@ModelAttribute("calculator") Calculator calculator, Model map) {
         map.addAttribute("result2", costCalculator.costPerPerson(calculator.getRouteInKilometers(),
                 calculator.getAverageCombustion(), calculator.getFuelPricePerLiter(), calculator.getHowManyPeople()));
-
+        calculatorRepository.save(calculator);
         return "calculate";
+    }
+    @GetMapping("/list")
+    public String showElements(ModelMap map) {
+        map.put("calculator", calculatorRepository.findAll());
+        return "list";
     }
 }
